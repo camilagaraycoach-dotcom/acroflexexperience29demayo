@@ -275,6 +275,7 @@
       margin-bottom: 32px;
       line-height: 1.65;
     }
+    .hero-subtitle--short { display: none; }
 
     .hero-trust {
       display: flex;
@@ -1344,38 +1345,25 @@
     ═══════════════════════════════════════════════ */
     @media (max-width: 767px) {
 
-      /* Hero */
-      .hero { padding-top: 72px; min-height: 100svh; }
-      .hero-inner { gap: 32px; }
-      .hero-title { font-size: clamp(38px, 11vw, 56px); }
-      .hero-subtitle { font-size: 15px; max-width: 100%; }
-      .hero-badge { font-size: 11px; letter-spacing: 1px; }
-      .event-card { padding: 22px 18px; }
-      .event-detail-value { font-size: 15px; }
+      /* Hero — versión móvil limpia */
+      .hero { padding-top: 68px; min-height: 100svh; display: flex; align-items: center; }
+      .hero-inner { gap: 0; }
+      .hero-title { font-size: clamp(42px, 13vw, 58px); margin-bottom: 12px; }
+      .hero-subtitle { font-size: 16px; max-width: 100%; margin-bottom: 28px; line-height: 1.5; }
+      .hero-badge { font-size: 11px; letter-spacing: 1px; margin-bottom: 20px; }
+
+      /* Ocultar elementos secundarios en móvil */
+      .vibes-strip { display: none; }
+      .hero-trust { display: none; }
+      .event-card { display: none; }
+      .hero-subtitle--long { display: none; }
+      .hero-subtitle--short { display: block; }
 
       /* Navbar móvil */
-      .navbar { padding: 10px 0; padding-top: max(10px, env(safe-area-inset-top)); }
+      .navbar { padding: 10px 0; padding-top: max(12px, env(safe-area-inset-top)); }
       .navbar-logo img { height: 42px; }
       .navbar-cta { padding: 10px 20px; font-size: 13px; letter-spacing: .5px; }
       .navbar-cta::before { display: none; }
-
-      /* Vibes strip: scroll horizontal en mobile */
-      .vibes-strip {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        overflow-y: visible;
-        justify-content: flex-start;
-        padding-bottom: 8px;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        gap: 8px;
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-      }
-      .vibes-strip::-webkit-scrollbar { display: none; }
-      .vibe-pill { flex-shrink: 0; font-size: 13px; padding: 9px 14px; }
-      .hero-trust { flex-wrap: wrap; max-width: 100%; }
 
       /* Botones */
       .btn { font-size: 14px; padding: 14px 24px; }
@@ -1499,8 +1487,11 @@
             <span class="line2">EXPERIENCE</span>
           </h1>
 
-          <p class="hero-subtitle reveal reveal-delay-2">
+          <p class="hero-subtitle hero-subtitle--long reveal reveal-delay-2">
             Una noche de acro, estiramiento, buena música, marcas aliadas y nuevos acrocompañeros. Multinivel — desde cero hasta avanzado, todos son bienvenidos.
+          </p>
+          <p class="hero-subtitle hero-subtitle--short reveal reveal-delay-2">
+            Acro, estiramiento, música y comunidad.<br>Multinivel — todos son bienvenidos.
           </p>
 
           <!-- VIBES: lo que hace especial esta noche -->
