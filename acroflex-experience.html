@@ -1,0 +1,2391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ACROFLEX EXPERIENCE — Viernes 29 de mayo</title>
+  <meta name="description" content="Acrobacia, estiramiento, buena música, marcas aliadas y nuevos acrocompañeros. Multinivel. Viernes 29 de mayo · 7:00 p.m. · Acroflex, Jesús María, Lima." />
+
+  <!-- ============================================================
+       VARIABLES FÁCILES DE EDITAR
+       ============================================================ -->
+  <!-- WhatsApp: reemplaza 51XXXXXXXXX con el número real -->
+  <!-- Precio: busca VAR_PRECIO en el HTML -->
+  <!-- Cupos: busca VAR_CUPOS -->
+  <!-- Fecha exacta: busca VAR_FECHA -->
+  <!-- ============================================================ -->
+
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      /* === COLORES ACROFLEX === */
+      --blue:       #1A4DB5;
+      --blue-dark:  #0F2F72;
+      --blue-light: #2563EB;
+      --orange:     #FF6B00;
+      --orange-hot: #FF8C00;
+      --white:      #FFFFFF;
+      --dark:       #0A0A14;
+      --dark2:      #13131F;
+      --dark3:      #1C1C2E;
+      --gray:       #8892A4;
+      --light:      #F4F6FB;
+
+      /* === TIPOGRAFÍA === */
+      --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+      /* === ESPACIOS === */
+      --max: 1140px;
+      --section-pad: clamp(64px, 8vw, 100px);
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--dark);
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    img { max-width: 100%; display: block; }
+    a  { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; font-family: inherit; }
+
+    /* ── UTILIDADES ── */
+    .container {
+      width: 100%;
+      max-width: var(--max);
+      margin-inline: auto;
+      padding-inline: clamp(20px, 5vw, 48px);
+    }
+    .section { padding-block: var(--section-pad); }
+    .section--light {
+      background: var(--dark2);
+    }
+    .section--alt {
+      background: var(--dark3);
+    }
+    .label-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(26px, 5vw, 42px);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+    .section-title span { color: var(--orange); }
+    .section-subtitle {
+      font-size: clamp(15px, 2vw, 18px);
+      color: var(--gray);
+      max-width: 640px;
+      line-height: 1.7;
+    }
+
+    /* ── BOTONES CTA ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      transition: transform .2s, box-shadow .2s, opacity .2s;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--orange) 0%, var(--orange-hot) 100%);
+      color: var(--white);
+      box-shadow: 0 8px 32px rgba(255,107,0,.4);
+    }
+    .btn-primary:hover { box-shadow: 0 12px 40px rgba(255,107,0,.55); }
+
+    .btn-outline {
+      border: 2px solid var(--orange);
+      color: var(--orange);
+      background: transparent;
+    }
+    .btn-outline:hover { background: rgba(255,107,0,.1); }
+
+    .btn-full { width: 100%; justify-content: center; }
+
+    /* whatsapp pulse */
+    .btn-primary::before {
+      content: '📲';
+      font-size: 18px;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+
+    /* ═══════════════════════════════════════════════
+       NAVBAR
+    ═══════════════════════════════════════════════ */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 16px 0;
+      transition: background .3s, box-shadow .3s;
+    }
+    .navbar.scrolled {
+      background: rgba(10,10,20,.92);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 2px 24px rgba(0,0,0,.5);
+    }
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+    }
+    .navbar-logo img {
+      height: 72px;
+      width: auto;
+      display: block;
+    }
+    .navbar-cta {
+      padding: 10px 22px;
+      font-size: 13px;
+    }
+
+    /* ═══════════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════════ */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+
+    /* fondo con foto + gradiente encima */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 40%, rgba(26,77,181,.55) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 20% 70%, rgba(255,107,0,.25) 0%, transparent 55%),
+        linear-gradient(160deg, rgba(10,10,20,.88) 0%, rgba(19,19,31,.82) 100%),
+        url('foto-grupo-comunidad.png') center top/cover no-repeat;
+      z-index: 0;
+    }
+
+    /* textura de puntos */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+      z-index: 0;
+    }
+
+    .hero .container { position: relative; z-index: 1; }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    @media (min-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr 420px; }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,107,0,.12);
+      border: 1px solid rgba(255,107,0,.3);
+      border-radius: 50px;
+      padding: 7px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 24px;
+    }
+    .hero-badge::before { content: '🎉'; }
+
+    .hero-title {
+      font-size: clamp(44px, 9vw, 84px);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -1px;
+      margin-bottom: 6px;
+    }
+    .hero-title .line2 {
+      color: var(--orange);
+      display: block;
+      font-style: italic;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(16px, 2.2vw, 20px);
+      color: var(--gray);
+      max-width: 520px;
+      margin-bottom: 32px;
+      line-height: 1.65;
+    }
+
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--gray);
+      margin-top: 16px;
+    }
+    .hero-trust::before {
+      content: '✓';
+      width: 20px;
+      height: 20px;
+      background: rgba(255,107,0,.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--orange);
+      flex-shrink: 0;
+    }
+
+    /* EVENT CARD */
+    .event-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 24px;
+      padding: 32px;
+      backdrop-filter: blur(10px);
+    }
+    .event-card-header {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 20px;
+    }
+    .event-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .event-detail:last-of-type { border-bottom: none; }
+    .event-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: rgba(26,77,181,.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .event-detail-label {
+      font-size: 11px;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 2px;
+    }
+    .event-detail-value {
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .event-card .btn { margin-top: 24px; }
+
+    .spots-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,107,0,.1);
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--orange);
+      font-weight: 600;
+    }
+    .spots-badge::before { content: '🎊'; }
+
+    /* ═══════════════════════════════════════════════
+       QUÉ ES ACROFLEX EXPERIENCE
+    ═══════════════════════════════════════════════ */
+    .what-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-top: 56px;
+    }
+    @media (min-width: 768px) {
+      .what-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .what-text p {
+      color: var(--gray);
+      font-size: clamp(15px, 1.8vw, 17px);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .what-highlight {
+      background: linear-gradient(135deg, rgba(26,77,181,.2), rgba(255,107,0,.1));
+      border-left: 3px solid var(--orange);
+      border-radius: 0 12px 12px 0;
+      padding: 16px 20px;
+      font-size: 15px;
+      color: var(--white);
+      font-style: italic;
+    }
+    .what-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .what-stat {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .what-stat-num {
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 900;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .what-stat-label {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.3;
+    }
+    .what-stat--full { grid-column: span 2; }
+    .what-photo-wrap {
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      grid-column: span 2;
+      box-shadow: 0 16px 48px rgba(0,0,0,.5);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .what-photo-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .what-stats-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      grid-column: span 2;
+    }
+
+    /* ═══════════════════════════════════════════════
+       PARA QUIÉN ES
+    ═══════════════════════════════════════════════ */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 48px;
+    }
+    .audience-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 16px;
+      padding: 20px;
+      transition: border-color .2s, background .2s;
+    }
+    .audience-item:hover {
+      border-color: rgba(255,107,0,.3);
+      background: rgba(255,107,0,.04);
+    }
+    .audience-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .audience-item p {
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    /* ═══════════════════════════════════════════════
+       QUÉ VAS A VIVIR (CARDS)
+    ═══════════════════════════════════════════════ */
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 52px;
+    }
+    .exp-card {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 3/4;
+      transition: transform .28s, box-shadow .28s;
+    }
+    .exp-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s ease;
+    }
+    .exp-card:hover { transform: translateY(-4px); box-shadow: 0 18px 52px rgba(0,0,0,.5); }
+    .exp-card:hover img { transform: scale(1.05); }
+    .exp-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.93) 0%, rgba(0,0,0,.55) 45%, rgba(0,0,0,.18) 100%);
+    }
+    .exp-content {
+      position: absolute;
+      inset: 0;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .exp-num {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--orange);
+      margin-bottom: 8px;
+    }
+    .exp-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .exp-title {
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 6px;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .exp-desc {
+      font-size: 12px;
+      color: rgba(255,255,255,.78);
+      line-height: 1.5;
+    }
+
+    /* ═══════════════════════════════════════════════
+       NO NECESITAS EXPERIENCIA
+    ═══════════════════════════════════════════════ */
+    .no-exp-section {
+      position: relative;
+      overflow: hidden;
+    }
+    .no-exp-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 80% at 50% 50%, rgba(26,77,181,.55) 0%, transparent 70%),
+        linear-gradient(rgba(10,10,20,.78), rgba(10,10,20,.78)),
+        url('foto-handstand-coach.png') center/cover no-repeat;
+    }
+    .no-exp-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .no-exp-big {
+      font-size: clamp(48px, 10vw, 96px);
+      font-weight: 900;
+      line-height: 1;
+      opacity: .06;
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      pointer-events: none;
+      letter-spacing: -2px;
+    }
+    .no-exp-inner p {
+      font-size: clamp(15px, 2vw, 18px);
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .no-exp-checks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 36px;
+    }
+    .no-exp-check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 50px;
+      padding: 10px 18px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .no-exp-check::before {
+      content: '✓';
+      color: var(--orange);
+      font-weight: 900;
+    }
+
+    /* ═══════════════════════════════════════════════
+       BENEFICIOS
+    ═══════════════════════════════════════════════ */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 48px;
+    }
+    .benefit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 14px;
+      transition: border-color .2s;
+    }
+    .benefit-item:hover { border-color: rgba(26,77,181,.4); }
+    .benefit-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--orange);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+    .benefit-text {
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+    .benefit-text strong { color: var(--white); }
+
+    /* ═══════════════════════════════════════════════
+       DETALLES DEL EVENTO
+    ═══════════════════════════════════════════════ */
+    .details-banner {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--dark3) 100%);
+      border: 1px solid rgba(26,77,181,.4);
+      border-radius: 28px;
+      padding: clamp(32px, 5vw, 56px);
+      margin-top: 52px;
+      position: relative;
+      overflow: hidden;
+    }
+    .details-banner::after {
+      content: '';
+      position: absolute;
+      right: -40px;
+      top: -40px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: rgba(255,107,0,.08);
+    }
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .detail-block {
+      text-align: center;
+    }
+    .detail-block-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    .detail-block-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 4px;
+    }
+    .detail-block-value {
+      font-size: clamp(15px, 2vw, 18px);
+      font-weight: 800;
+      color: var(--white);
+    }
+    .detail-block-value.highlight { color: var(--orange); }
+
+    /* ═══════════════════════════════════════════════
+       QUÉ INCLUYE
+    ═══════════════════════════════════════════════ */
+    /* ── INCLUDES PHOTO GRID ── */
+    .includes-photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 48px;
+    }
+    .inc-card {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 3/4;
+      background: var(--dark3);
+      cursor: default;
+    }
+    .inc-card--wide {
+      grid-column: span 2;
+      aspect-ratio: 16/9;
+    }
+    .inc-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+    .inc-card:hover img { transform: scale(1.05); }
+    .inc-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.3) 45%, transparent 100%);
+    }
+    .inc-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 20px;
+    }
+    .inc-icon { font-size: 22px; margin-bottom: 6px; }
+    .inc-title {
+      font-size: clamp(14px, 1.8vw, 17px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+    .inc-text {
+      font-size: clamp(12px, 1.2vw, 13px);
+      color: rgba(255,255,255,.65);
+      line-height: 1.4;
+    }
+    /* card sin foto: fondo degradado */
+    .inc-card--gradient {
+      background: linear-gradient(135deg, rgba(26,77,181,.3), rgba(255,107,0,.15));
+      border: 1px solid rgba(255,107,0,.2);
+    }
+
+    /* (legacy, kept for reference) */
+    .include-check {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--blue-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      flex-shrink: 0;
+      color: var(--white);
+      font-weight: 900;
+    }
+
+    /* ═══════════════════════════════════════════════
+       GALERÍA
+    ═══════════════════════════════════════════════ */
+    .gallery-section {
+      padding-block: var(--section-pad);
+      overflow: hidden;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      gap: 12px;
+      margin-top: 40px;
+    }
+    @media (min-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .gallery-item:first-child { grid-column: span 2; grid-row: span 2; }
+    }
+    /* ⬇️ CAMBIA ESTAS IMÁGENES cuando tengas fotos reales */
+    .gallery-item {
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.06);
+      aspect-ratio: 1;
+      position: relative;
+      transition: transform .25s;
+    }
+    .gallery-item:hover { transform: scale(1.02); }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    /* placeholder cuando no hay foto */
+    .gallery-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--gray);
+      font-size: 28px;
+    }
+    .gallery-placeholder span {
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ═══════════════════════════════════════════════
+       FAQ
+    ═══════════════════════════════════════════════ */
+    .faq-list {
+      max-width: 760px;
+      margin: 52px auto 0;
+    }
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      color: var(--white);
+      text-align: left;
+      padding: 20px 0;
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transition: color .2s;
+    }
+    .faq-question:hover { color: var(--orange); }
+    .faq-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+      transition: border-color .2s, transform .3s;
+      line-height: 1;
+    }
+    .faq-item.open .faq-icon {
+      border-color: var(--orange);
+      transform: rotate(45deg);
+      color: var(--orange);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease;
+    }
+    .faq-answer-inner {
+      padding-bottom: 20px;
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════
+       CTA FINAL
+    ═══════════════════════════════════════════════ */
+    .final-cta {
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 100% at 50% 100%, rgba(255,107,0,.25) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 60% at 50% 0%, rgba(26,77,181,.3) 0%, transparent 60%),
+        linear-gradient(rgba(10,10,20,.85), rgba(10,10,20,.85)),
+        url('foto-splits-sonrisa.png') center/cover no-repeat;
+    }
+    .final-cta .container { position: relative; z-index: 1; }
+    .final-cta .section-title { max-width: 700px; margin-inline: auto; }
+    .final-cta .section-subtitle { margin-inline: auto; text-align: center; }
+    .cta-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      margin-top: 40px;
+    }
+    @media (min-width: 480px) {
+      .cta-actions { flex-direction: row; justify-content: center; }
+    }
+    .urgency-note {
+      font-size: 13px;
+      color: var(--gray);
+      margin-top: 20px;
+    }
+    .urgency-note strong { color: var(--orange); }
+
+    /* ═══════════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════════ */
+    .footer {
+      padding: 40px 0;
+      border-top: 1px solid rgba(255,255,255,.06);
+      text-align: center;
+    }
+    .footer-logo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+    .footer-logo img {
+      height: 90px;
+      width: auto;
+    }
+    .footer p {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+    .footer-link {
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    /* ═══════════════════════════════════════════════
+       FLOATING CTA (mobile)
+    ═══════════════════════════════════════════════ */
+    .floating-cta {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 999;
+      white-space: nowrap;
+      box-shadow: 0 8px 40px rgba(255,107,0,.5);
+      display: none;
+      padding: 14px 28px;
+      font-size: 15px;
+    }
+    @media (max-width: 767px) {
+      .floating-cta { display: inline-flex; }
+    }
+
+    /* ═══════════════════════════════════════════════
+       DIVIDER
+    ═══════════════════════════════════════════════ */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
+    }
+
+    /* ═══════════════════════════════════════════════
+       VIBES BANNER (música + ambiente)
+    ═══════════════════════════════════════════════ */
+    .vibes-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .vibe-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 50px;
+      padding: 12px 20px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+      transition: border-color .2s, background .2s;
+    }
+    .vibe-pill:hover {
+      border-color: rgba(255,107,0,.4);
+      background: rgba(255,107,0,.06);
+    }
+    .vibe-pill .vi { font-size: 20px; }
+
+    /* ═══════════════════════════════════════════════
+       MARCAS ALIADAS
+    ═══════════════════════════════════════════════ */
+    .brands-section { text-align: center; }
+    .brands-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 40px;
+    }
+    /* tarjeta de marca misteriosa */
+    .brand-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 28px 36px;
+      min-width: 140px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .3s, transform .3s;
+      cursor: default;
+    }
+    .brand-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,107,0,.04), rgba(26,77,181,.04));
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .brand-card:hover { border-color: rgba(255,107,0,.25); transform: translateY(-3px); }
+    .brand-card:hover::before { opacity: 1; }
+    .brand-mystery-icon {
+      font-size: 32px;
+      margin-bottom: 10px;
+      filter: blur(0px);
+      animation: pulse-icon 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse-icon {
+      0%, 100% { opacity: .5; transform: scale(1); }
+      50%       { opacity: 1;  transform: scale(1.1); }
+    }
+    .brand-mystery-label {
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 6px;
+      color: rgba(255,255,255,.15);
+      user-select: none;
+    }
+    /* barra de "redactado" debajo del ???  */
+    .brand-redacted {
+      width: 60px;
+      height: 6px;
+      background: rgba(255,255,255,.08);
+      border-radius: 4px;
+      margin: 10px auto 0;
+    }
+    .brands-reveal-note {
+      margin-top: 36px;
+      font-size: 15px;
+      color: var(--gray);
+      font-style: italic;
+      text-align: center;
+    }
+    .brands-reveal-note strong { color: var(--orange); font-style: normal; }
+
+    /* ═══════════════════════════════════════════════
+       MULTINIVEL BADGE en sección hero card
+    ═══════════════════════════════════════════════ */
+    .multilevel-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, rgba(26,77,181,.3), rgba(37,99,235,.2));
+      border: 1px solid rgba(37,99,235,.4);
+      border-radius: 8px;
+      padding: 7px 14px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #93C5FD;
+      margin-top: 8px;
+    }
+
+    /* ═══════════════════════════════════════════════
+       CUENTA REGRESIVA — SECCIÓN COMPLETA
+    ═══════════════════════════════════════════════ */
+    .countdown-section {
+      position: relative;
+      overflow: hidden;
+      padding-block: clamp(56px, 8vw, 88px);
+      text-align: center;
+    }
+    .countdown-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 90% 100% at 50% 110%, rgba(255,107,0,.22) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 60% at 20% 0%, rgba(26,77,181,.2) 0%, transparent 55%),
+        linear-gradient(180deg, var(--dark3) 0%, var(--dark) 100%);
+    }
+    /* línea pulsante superior */
+    .countdown-section::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--orange), var(--blue-light), var(--orange), transparent);
+      animation: shimmer 3s linear infinite;
+      background-size: 200% 100%;
+    }
+    @keyframes shimmer {
+      0%   { background-position: -200% 0; }
+      100% { background-position:  200% 0; }
+    }
+
+    .countdown-section .container { position: relative; z-index: 1; }
+
+    .cd-event-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 10px;
+    }
+    .cd-headline {
+      font-size: clamp(18px, 3.5vw, 26px);
+      font-weight: 900;
+      margin-bottom: 6px;
+      letter-spacing: -.3px;
+    }
+    .cd-subline {
+      font-size: clamp(13px, 1.8vw, 16px);
+      color: var(--gray);
+      margin-bottom: 40px;
+    }
+
+    .countdown-boxes {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: clamp(8px, 2vw, 20px);
+      flex-wrap: wrap;
+    }
+    .cd-box {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,107,0,.3);
+      border-radius: 20px;
+      padding: clamp(20px, 3vw, 32px) clamp(18px, 3vw, 36px) clamp(14px, 2vw, 22px);
+      min-width: clamp(80px, 14vw, 130px);
+      text-align: center;
+      box-shadow: 0 0 40px rgba(255,107,0,.08), inset 0 1px 0 rgba(255,255,255,.06);
+      position: relative;
+      overflow: hidden;
+    }
+    /* brillo superior sutil */
+    .cd-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 10%; right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,107,0,.6), transparent);
+    }
+    .cd-num {
+      display: block;
+      font-size: clamp(52px, 10vw, 88px);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -2px;
+    }
+    /* el número en sí con glow naranja */
+    .cd-num {
+      text-shadow: 0 0 40px rgba(255,107,0,.5);
+    }
+    .cd-unit {
+      display: block;
+      font-size: clamp(10px, 1.2vw, 13px);
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-top: 8px;
+    }
+    .cd-sep {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 900;
+      color: var(--orange);
+      opacity: .4;
+      margin-top: clamp(20px, 3vw, 32px);
+      align-self: flex-start;
+    }
+    .countdown-live {
+      font-size: clamp(20px, 4vw, 32px);
+      font-weight: 900;
+      color: var(--orange);
+      padding: 20px;
+    }
+    .cd-cta-row {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .cd-urgency {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .cd-urgency strong { color: var(--orange); }
+
+    /* ═══════════════════════════════════════════════
+       PRECIOS
+    ═══════════════════════════════════════════════ */
+    .pricing-section { text-align: center; }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-width: 700px;
+      margin: 44px auto 0;
+    }
+    @media (min-width: 580px) {
+      .pricing-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .price-card {
+      border-radius: 24px;
+      padding: 32px 28px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      position: relative;
+      overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .price-card:hover { transform: translateY(-4px); }
+    .price-card--featured {
+      background: linear-gradient(145deg, rgba(255,107,0,.12), rgba(26,77,181,.1));
+      border-color: rgba(255,107,0,.4);
+      box-shadow: 0 8px 40px rgba(255,107,0,.15);
+    }
+    .price-badge {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+    }
+    .price-tag {
+      font-size: clamp(42px, 8vw, 56px);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--white);
+    }
+    .price-tag sup {
+      font-size: .4em;
+      vertical-align: top;
+      margin-top: .3em;
+      color: var(--gray);
+      font-weight: 700;
+    }
+    .price-card--featured .price-tag { color: var(--orange); }
+    .price-desc {
+      font-size: 14px;
+      color: var(--gray);
+      margin-top: 8px;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .price-saving {
+      display: inline-block;
+      background: rgba(255,107,0,.15);
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+    }
+    .price-cta { display: block; }
+
+    /* ═══════════════════════════════════════════════
+       SCROLL DOWN INDICATOR
+    ═══════════════════════════════════════════════ */
+    .scroll-down {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      opacity: 1;
+      transition: opacity .4s;
+    }
+    .scroll-down.hidden { opacity: 0; pointer-events: none; }
+    .scroll-down-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.5);
+    }
+    .scroll-down-arrow {
+      width: 38px;
+      height: 38px;
+      border: 2px solid rgba(255,255,255,.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: bounce-arrow 1.8s ease-in-out infinite;
+    }
+    .scroll-down-arrow svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: rgba(255,255,255,.7);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    /* línea que cae */
+    .scroll-down-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(255,107,0,.6), transparent);
+      animation: line-fall 1.8s ease-in-out infinite;
+    }
+    @keyframes bounce-arrow {
+      0%, 100% { transform: translateY(0);   border-color: rgba(255,107,0,.3); }
+      50%       { transform: translateY(6px); border-color: rgba(255,107,0,.7); }
+    }
+    @keyframes line-fall {
+      0%   { opacity: 0; transform: scaleY(0); transform-origin: top; }
+      50%  { opacity: 1; transform: scaleY(1); transform-origin: top; }
+      100% { opacity: 0; transform: scaleY(1); transform-origin: bottom; }
+    }
+
+    /* ═══════════════════════════════════════════════
+       MOBILE — 767px y menos
+    ═══════════════════════════════════════════════ */
+    @media (max-width: 767px) {
+
+      /* Hero */
+      .hero { padding-top: 72px; min-height: 100svh; }
+      .hero-inner { gap: 32px; }
+      .hero-title { font-size: clamp(38px, 11vw, 56px); }
+      .hero-subtitle { font-size: 15px; }
+      .event-card { padding: 22px 18px; }
+      .event-detail-value { font-size: 15px; }
+
+      /* Vibes strip: scroll horizontal en mobile */
+      .vibes-strip {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 8px;
+      }
+      .vibes-strip::-webkit-scrollbar { display: none; }
+      .vibe-pill { flex-shrink: 0; font-size: 13px; padding: 9px 14px; }
+
+      /* Botones */
+      .btn { font-size: 14px; padding: 14px 24px; }
+      .cta-actions { flex-direction: column; align-items: stretch; }
+      .cta-actions .btn { width: 100%; justify-content: center; }
+
+      /* Sección "qué es" */
+      .what-grid { gap: 28px; }
+      .what-photo-wrap { aspect-ratio: 16/9; }
+      .what-stats-row { gap: 10px; }
+      .what-stat { padding: 16px 12px; }
+      .what-stat-num { font-size: 28px; }
+
+      /* Cuenta regresiva */
+      .cd-box { min-width: clamp(64px, 18vw, 90px); padding: 14px 8px 10px; border-radius: 14px; }
+      .cd-num { font-size: clamp(36px, 12vw, 56px); }
+      .cd-sep { font-size: 28px; margin-top: 16px; }
+      .cd-headline { font-size: 18px; }
+      .countdown-section { padding-block: 48px 40px; }
+
+      /* Experiencia cards */
+      .experience-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .exp-content { padding: 14px; }
+      .exp-icon { font-size: 24px; margin-bottom: 6px; }
+      .exp-title { font-size: 14px; }
+      .exp-desc { font-size: 11px; }
+
+      /* Audience grid */
+      .audience-grid { grid-template-columns: 1fr; gap: 10px; }
+      .audience-item { padding: 14px 16px; }
+
+      /* Includes bento grid */
+      .includes-photo-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .inc-card--wide { grid-column: span 2; aspect-ratio: 4/3; }
+      .inc-card { aspect-ratio: 3/4; }
+      .inc-title { font-size: 14px; }
+      .inc-text { font-size: 12px; }
+      .inc-content { padding: 14px; }
+
+      /* Precios */
+      .pricing-grid { grid-template-columns: 1fr; max-width: 360px; }
+
+      /* Detalles */
+      .details-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+      /* Galería */
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-item:first-child { grid-column: span 2; aspect-ratio: 4/3; }
+
+      /* FAQ */
+      .faq-question { font-size: 15px; }
+
+      /* Scroll down */
+      .scroll-down { bottom: 20px; }
+      .scroll-down-line { height: 28px; }
+
+      /* Multinivel badge */
+      .multilevel-badge { font-size: 11px; }
+
+      /* Marcas */
+      .brands-grid { gap: 10px; }
+      .brand-card { padding: 20px 20px; min-width: 110px; }
+
+      /* Floating CTA más visible */
+      .floating-cta { font-size: 14px; padding: 14px 22px; bottom: 16px; }
+    }
+
+    /* ═══════════════════════════════════════════════
+       MOBILE PEQUEÑO — 480px y menos
+    ═══════════════════════════════════════════════ */
+    @media (max-width: 480px) {
+      .hero-title { font-size: clamp(34px, 12vw, 48px); }
+
+      /* Countdown: oculta los segundos en pantallas muy pequeñas */
+      .cd-secs-wrap { display: none !important; }
+
+      /* Includes: 1 columna en pantallas muy pequeñas */
+      .includes-photo-grid { grid-template-columns: 1fr; }
+      .inc-card--wide { grid-column: span 1; aspect-ratio: 16/9; }
+      .inc-card { aspect-ratio: 16/9; }
+      .inc-content { bottom: 0; transform: none; }
+
+      /* Experiencia: 2 columnas en móvil pequeño (cards son portrait, caben bien) */
+      .experience-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+
+      /* Detalles: 1 columna */
+      .details-grid { grid-template-columns: repeat(2, 1fr); }
+
+      /* Galería: 1 columna + 2 columnas */
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+
+      /* Section padding menor */
+      :root { --section-pad: 48px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════ NAVBAR ════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="navbar-logo"><img src="logo-acroflex.png" alt="Acroflex" /></div>
+      <!--
+        WHATSAPP: reemplaza 51XXXXXXXXX con el número del gimnasio
+        Ejemplo: https://wa.me/51987654321?text=...
+      -->
+      <a href="https://wa.me/51993813336?text=Hola!%20Quiero%20informaci%C3%B3n%20sobre%20el%20Acroflex%20Experience%20del%20viernes%2029%20de%20mayo%20%F0%9F%8E%89" target="_blank" rel="noopener" class="btn btn-primary navbar-cta">Reservar cupo</a>
+    </div>
+  </nav>
+
+  <!-- ════════ HERO ════════ -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-inner">
+
+        <div class="hero-content">
+          <div class="hero-badge reveal">Viernes 29 de mayo · Jesús María, Lima</div>
+
+          <h1 class="hero-title reveal reveal-delay-1">
+            ACROFLEX
+            <span class="line2">EXPERIENCE</span>
+          </h1>
+
+          <p class="hero-subtitle reveal reveal-delay-2">
+            Una noche de acro, estiramiento, buena música, marcas aliadas y nuevos acrocompañeros. Multinivel — desde cero hasta avanzado, todos son bienvenidos.
+          </p>
+
+          <!-- VIBES: lo que hace especial esta noche -->
+          <div class="vibes-strip reveal reveal-delay-2" style="margin-bottom:28px;">
+            <span class="vibe-pill"><span class="vi">🎶</span> Buena música</span>
+            <span class="vibe-pill"><span class="vi">🥳</span> Acro multinivel</span>
+            <span class="vibe-pill"><span class="vi">🎈</span> Estiramiento</span>
+            <span class="vibe-pill"><span class="vi">🪩</span> Acrocompañeros</span>
+            <span class="vibe-pill"><span class="vi">🎁</span> Marcas sorpresa</span>
+            <span class="vibe-pill"><span class="vi">🎊</span> Fotos y videos</span>
+          </div>
+
+          <a href="https://wa.me/51993813336?text=Hola!%20Quiero%20informaci%C3%B3n%20sobre%20el%20Acroflex%20Experience%20del%20viernes%2029%20de%20mayo%20%F0%9F%8E%89" target="_blank" rel="noopener" class="btn btn-primary reveal reveal-delay-3">
+            Quiero vivir la experiencia
+          </a>
+
+          <p class="hero-trust reveal reveal-delay-4">
+            Ven a jugar, aprender y conectar. No necesitas experiencia previa.
+          </p>
+        </div>
+
+        <!-- TARJETA DEL EVENTO -->
+        <div class="event-card reveal reveal-delay-2">
+          <div class="event-card-header">📅 Detalles del Evento</div>
+
+          <div class="event-detail">
+            <div class="event-icon">📆</div>
+            <div>
+              <div class="event-detail-label">Fecha</div>
+              <!-- VAR_FECHA: cambia la fecha del evento -->
+              <div class="event-detail-value">Viernes 29 de mayo</div>
+            </div>
+          </div>
+
+          <div class="event-detail">
+            <div class="event-icon">🕖</div>
+            <div>
+              <div class="event-detail-label">Horario</div>
+              <!-- VAR_HORA: cambia la hora del evento -->
+              <div class="event-detail-value">7:00 p.m. a 9:30 p.m.</div>
+            </div>
+          </div>
+
+          <div class="event-detail">
+            <div class="event-icon">⏱️</div>
+            <div>
+              <div class="event-detail-label">Duración</div>
+              <div class="event-detail-value">2 horas 30 minutos</div>
+            </div>
+          </div>
+
+          <div class="event-detail">
+            <div class="event-icon">📍</div>
+            <div>
+              <div class="event-detail-label">Lugar</div>
+              <!-- VAR_DIRECCION: agrega la dirección exacta -->
+              <div class="event-detail-value">Acroflex, Jesús María, Lima</div>
+            </div>
+          </div>
+
+          <div class="event-detail">
+            <div class="event-icon">💰</div>
+            <div>
+              <div class="event-detail-label">Precio</div>
+              <!-- VAR_PRECIO -->
+              <div class="event-detail-value">S/ 99 por persona · S/ 169 por 2</div>
+            </div>
+          </div>
+
+          <div class="multilevel-badge">🥳 Multinivel — desde cero hasta avanzado</div>
+
+          <div class="spots-badge">
+            <!-- VAR_CUPOS -->
+            Cupos limitados — inscripciones por WhatsApp
+          </div>
+
+          <a href="https://wa.me/51993813336?text=Hola!%20Quiero%20inscribirme%20al%20Acroflex%20Experience%20del%20viernes%2029%20de%20mayo%20%F0%9F%8E%89" target="_blank" rel="noopener" class="btn btn-primary btn-full">Inscribirme por WhatsApp</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SCROLL DOWN -->
+    <div class="scroll-down" id="scrollDown" onclick="document.getElementById('countdown').scrollIntoView({behavior:'smooth'})">
+      <div class="scroll-down-line"></div>
+      <div class="scroll-down-arrow">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <span class="scroll-down-label">Scroll</span>
+    </div>
+
+  </section>
+
+  <!-- ════════ CUENTA REGRESIVA ════════ -->
+  <section class="countdown-section" id="countdown">
+    <div style="position:absolute;inset:0;background:url('foto-grupo-clase.png') center 30%/cover no-repeat;opacity:.07;z-index:0;pointer-events:none;"></div>
+    <div class="container">
+
+      <div class="cd-event-label">🎉 Acroflex Experience · Viernes 29 de mayo</div>
+      <h2 class="cd-headline">El evento comienza en</h2>
+      <p class="cd-subline">7:00 p.m. · Jesús María, Lima · Cupos limitados</p>
+
+      <div class="countdown-boxes" id="countdown-boxes">
+        <div class="cd-box">
+          <span class="cd-num" id="cd-days">00</span>
+          <span class="cd-unit">días</span>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-box">
+          <span class="cd-num" id="cd-hours">00</span>
+          <span class="cd-unit">horas</span>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-box">
+          <span class="cd-num" id="cd-mins">00</span>
+          <span class="cd-unit">min</span>
+        </div>
+        <span class="cd-secs-wrap" style="display:contents;">
+          <div class="cd-sep">:</div>
+          <div class="cd-box">
+            <span class="cd-num" id="cd-secs">00</span>
+            <span class="cd-unit">seg</span>
+          </div>
+        </span>
+      </div>
+
+      <div class="cd-cta-row">
+        <a href="https://wa.me/51993813336?text=Hola!%20Quiero%20inscribirme%20al%20Acroflex%20Experience%20del%20viernes%2029%20de%20mayo%20%F0%9F%8E%89" target="_blank" rel="noopener" class="btn btn-primary">
+          Inscribirme ahora
+        </a>
+        <p class="cd-urgency"><strong>S/ 99</strong> por persona · <strong>S/ 169</strong> por 2 · Inscripciones por WhatsApp</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ════════ QUÉ ES ACROFLEX EXPERIENCE ════════ -->
+  <section class="section section--light" id="que-es">
+    <div class="container">
+      <div class="label-tag reveal">¿Qué es esto?</div>
+      <h2 class="section-title reveal">No es una clase común.<br><span>Es una noche para disfrutar.</span></h2>
+
+      <div class="what-grid">
+        <div class="what-text reveal">
+          <p>
+            Acroflex Experience es una noche diseñada para que <strong>juegues, aprendas y la pases bien.</strong> Acro, estiramiento, buena música, marcas aliadas y gente nueva que también ama moverse.
+          </p>
+          <p>
+            No hay presión, no hay competencia. Solo <strong>2 horas y 30 minutos</strong> de movimiento real, risas, retos divertidos y conexión con tu cuerpo y con otros acrocompañeros.
+          </p>
+          <div class="what-highlight">
+            "Saldrás con nuevos amigos, fotos increíbles y ganas de volver todos los miércoles."
+          </div>
+        </div>
+
+        <div class="what-visual reveal reveal-delay-2">
+          <div class="what-photo-wrap">
+            <img src="foto-grupo-clase.png" alt="Clase adultos Acroflex" />
+          </div>
+          <div class="what-stats-row">
+            <div class="what-stat">
+              <div class="what-stat-num">2.5<small style="font-size:.5em">h</small></div>
+              <div class="what-stat-label">De diversión y comunidad</div>
+            </div>
+            <div class="what-stat">
+              <div class="what-stat-num">0</div>
+              <div class="what-stat-label">Experiencia previa necesaria</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ════════ PARA QUIÉN ES ════════ -->
+  <section class="section" id="para-quien" style="position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:url('foto-grupo-comunidad.png') center/cover no-repeat;opacity:.13;z-index:0;"></div>
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="label-tag reveal">¿Es para mí?</div>
+      <h2 class="section-title reveal">Esto es para ti si…</h2>
+      <p class="section-subtitle reveal">Es multinivel — da igual si empiezas desde cero o ya tienes experiencia. Hay espacio para todos.</p>
+
+      <div class="audience-grid">
+        <div class="audience-item reveal">
+          <span class="audience-icon">🎉</span>
+          <p>Quieres probar el acro <strong>por primera vez</strong> en un ambiente divertido y sin presión.</p>
+        </div>
+        <div class="audience-item reveal reveal-delay-1">
+          <span class="audience-icon">🥳</span>
+          <p>Ya practicas acro y quieres <strong>jugar, seguir aprendiendo</strong> y conocer más gente del mundo acro.</p>
+        </div>
+        <div class="audience-item reveal reveal-delay-2">
+          <span class="audience-icon">🕺</span>
+          <p>Eres bailarín o bailarina y quieres explorar <strong>acrobacias y estiramiento.</strong></p>
+        </div>
+        <div class="audience-item reveal">
+          <span class="audience-icon">🎶</span>
+          <p>Quieres moverte con <strong>buena música</strong> en un espacio con energía diferente.</p>
+        </div>
+        <div class="audience-item reveal reveal-delay-1">
+          <span class="audience-icon">✨</span>
+          <p>Quieres contenido increíble: <strong>fotos y videos</strong> en un espacio instagramiable.</p>
+        </div>
+        <div class="audience-item reveal reveal-delay-2">
+          <span class="audience-icon">🪩</span>
+          <p>Quieres <strong>conocer personas</strong> que también disfrutan moverse, estirar y reírse.</p>
+        </div>
+        <div class="audience-item reveal">
+          <span class="audience-icon">🎊</span>
+          <p>Quieres una noche diferente — <strong>divertida, activa y memorable.</strong></p>
+        </div>
+        <div class="audience-item reveal reveal-delay-1">
+          <span class="audience-icon">🎁</span>
+          <p>Te gusta descubrir <strong>marcas aliadas</strong> que resuenan con tu estilo de vida activo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ════════ QUÉ VAS A VIVIR ════════ -->
+  <section class="section section--alt" id="experiencia">
+    <div class="container">
+      <div class="label-tag reveal">El programa</div>
+      <h2 class="section-title reveal">Una noche que tiene <span>de todo</span></h2>
+      <p class="section-subtitle reveal">Acro, estiramiento, juego, música, marcas y comunidad. Todo en una sola noche.</p>
+
+      <div class="experience-grid">
+
+        <div class="exp-card reveal">
+          <img src="foto-grupo-clase.png" alt="Buena música Acroflex" />
+          <div class="exp-overlay"></div>
+          <div class="exp-content">
+            <div class="exp-num">01</div>
+            <span class="exp-icon">🎶</span>
+            <div class="exp-title">Buena música</div>
+            <p class="exp-desc">Toda la noche con música que te mueve. El ambiente importa tanto como el entrenamiento.</p>
+          </div>
+        </div>
+
+        <div class="exp-card reveal reveal-delay-1">
+          <img src="foto-cartwheel-accion.png" alt="Activación Acroflex" />
+          <div class="exp-overlay"></div>
+          <div class="exp-content">
+            <div class="exp-num">02</div>
+            <span class="exp-icon">🎉</span>
+            <div class="exp-title">Activación y calentamiento</div>
+            <p class="exp-desc">Entramos en calor juntos de forma dinámica y divertida. Sin aburrimiento desde el minuto uno.</p>
+          </div>
+        </div>
+
+        <div class="exp-card reveal reveal-delay-2">
+          <img src="foto-splits-sonrisa.png" alt="Estiramiento Acroflex" />
+          <div class="exp-overlay"></div>
+          <div class="exp-content">
+            <div class="exp-num">03</div>
+            <span class="exp-icon">🎈</span>
+            <div class="exp-title">Estiramiento guiado</div>
+            <p class="exp-desc">Flexibilidad real, progresiva y bien explicada. Adaptada a todos los niveles, sin forzar nada.</p>
+          </div>
+        </div>
+
+        <div class="exp-card reveal reveal-delay-3">
+          <img src="foto-handstand-solo.png" alt="Acro multinivel" />
+          <div class="exp-overlay"></div>
+          <div class="exp-content">
+            <div class="exp-num">04</div>
+            <span class="exp-icon">🥳</span>
+            <div class="exp-title">Acro multinivel</div>
+            <p class="exp-desc">¿Empiezas de cero? Hay ejercicios para ti. ¿Ya tienes base? También. Todos avanzan desde donde están.</p>
+          </div>
+        </div>
+
+        <div class="exp-card reveal">
+          <img src="foto-grupo-comunidad.png" alt="Juegos y retos Acroflex" />
+          <div class="exp-overlay"></div>
+          <div class="exp-content">
+            <div class="exp-num">05</div>
+            <span class="exp-icon">🎊</span>
+            <div class="exp-title">Juegos y retos</div>
+            <p class="exp-desc">Dinámicas grupales para jugar, reírse y descubrir nuevas cosas con acrocompañeros.</p>
+          </div>
+        </div>
+
+        <div class="exp-card reveal reveal-delay-1">
+          <img src="foto-grupo-clase.png" alt="Acrocompañeros" />
+          <div class="exp-overlay"></div>
+          <div class="exp-content">
+            <div class="exp-num">06</div>
+            <span class="exp-icon">🪩</span>
+            <div class="exp-title">Nuevos acrocompañeros</div>
+            <p class="exp-desc">Conoces personas que comparten tu mismo interés. La comunidad acro empieza aquí.</p>
+          </div>
+        </div>
+
+        <div class="exp-card reveal reveal-delay-2">
+          <img src="foto-puente-logo.png" alt="Fotos y videos" />
+          <div class="exp-overlay"></div>
+          <div class="exp-content">
+            <div class="exp-num">07</div>
+            <span class="exp-icon">✨</span>
+            <div class="exp-title">Fotos y videos</div>
+            <p class="exp-desc">Espacios preparados para que puedas registrar la noche y crear contenido que vale la pena compartir.</p>
+          </div>
+        </div>
+
+        <div class="exp-card reveal reveal-delay-3">
+          <img src="foto-handstand-coach.png" alt="Marcas sorpresa" />
+          <div class="exp-overlay"></div>
+          <div class="exp-content">
+            <div class="exp-num">08</div>
+            <span class="exp-icon">🎁</span>
+            <div class="exp-title">Marcas sorpresa</div>
+            <p class="exp-desc">Habrá marcas especiales esa noche. No las revelamos antes. Solo los que vengan lo sabrán.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ════════ NO NECESITAS EXPERIENCIA ════════ -->
+  <section class="section no-exp-section" id="sin-experiencia">
+    <div class="container">
+      <div class="no-exp-inner">
+        <div class="no-exp-big">MULTINIVEL</div>
+        <div class="label-tag reveal">Para todos los niveles</div>
+        <h2 class="section-title reveal" style="text-align:center;">
+          No importa tu nivel.<br><span>Aquí hay espacio para ti.</span>
+        </h2>
+
+        <p class="reveal" style="text-align:center;">
+          La clase es <strong>multinivel</strong>: si es tu primera vez, hay ejercicios para ti. Si ya tienes experiencia, también. Los entrenadores acompañan a cada persona desde donde está.
+        </p>
+        <p class="reveal" style="text-align:center;">
+          La idea no es demostrar nada. Es <strong>jugar, aprender y disfrutar el proceso.</strong> En Acroflex el ambiente es sin comparaciones, sin ego, solo buena vibra y ganas de moverse.
+        </p>
+        <p class="reveal" style="text-align:center;">
+          No importa si nunca hiciste acro, si no llegas a tocarte los pies, o si hace tiempo que no entrenas. Lo que importa es que <strong>llegues con ganas.</strong>
+        </p>
+
+        <div class="no-exp-checks reveal">
+          <div class="no-exp-check">Multinivel real</div>
+          <div class="no-exp-check">Sin comparaciones</div>
+          <div class="no-exp-check">Entrenadores que guían</div>
+          <div class="no-exp-check">Progresivo y seguro</div>
+          <div class="no-exp-check">Ambiente sin ego</div>
+          <div class="no-exp-check">Puedes ir solo o acompañado</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ════════ DETALLES DEL EVENTO ════════ -->
+  <section class="section section--alt" id="detalles" style="position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:url('foto-cartwheel-accion.png') center 25%/cover no-repeat;opacity:.06;z-index:0;pointer-events:none;"></div>
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="label-tag reveal">El evento</div>
+      <h2 class="section-title reveal">Todo lo que necesitas <span>saber</span></h2>
+
+      <div class="details-banner reveal">
+        <div class="details-grid">
+          <div class="detail-block">
+            <div class="detail-block-icon">📆</div>
+            <div class="detail-block-label">Fecha</div>
+            <!-- VAR_FECHA -->
+            <div class="detail-block-value highlight">Viernes 29 de mayo</div>
+          </div>
+          <div class="detail-block">
+            <div class="detail-block-icon">🕖</div>
+            <div class="detail-block-label">Horario</div>
+            <!-- VAR_HORA -->
+            <div class="detail-block-value">7:00 – 9:30 p.m.</div>
+          </div>
+          <div class="detail-block">
+            <div class="detail-block-icon">⏱️</div>
+            <div class="detail-block-label">Duración</div>
+            <div class="detail-block-value">2h 30 min</div>
+          </div>
+          <div class="detail-block">
+            <div class="detail-block-icon">📍</div>
+            <div class="detail-block-label">Lugar</div>
+            <!-- VAR_DIRECCION -->
+            <div class="detail-block-value">Jesús María, Lima</div>
+          </div>
+          <div class="detail-block">
+            <div class="detail-block-icon">🎯</div>
+            <div class="detail-block-label">Nivel</div>
+            <div class="detail-block-value">Desde cero / multinivel</div>
+          </div>
+          <div class="detail-block">
+            <div class="detail-block-icon">👥</div>
+            <div class="detail-block-label">Público</div>
+            <div class="detail-block-value">Jóvenes y adultos</div>
+          </div>
+          <div class="detail-block">
+            <div class="detail-block-icon">💰</div>
+            <div class="detail-block-label">Precio</div>
+            <div class="detail-block-value highlight">S/ 99 · S/ 169 x2</div>
+          </div>
+          <div class="detail-block">
+            <div class="detail-block-icon">🎊</div>
+            <div class="detail-block-label">Inscripciones</div>
+            <div class="detail-block-value highlight">WhatsApp 993 813 336</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ════════ QUÉ INCLUYE ════════ -->
+  <section class="section" id="incluye">
+    <div class="container">
+      <div class="label-tag reveal">Todo incluido</div>
+      <h2 class="section-title reveal">¿Qué <span>incluye</span> la experiencia?</h2>
+
+      <div class="includes-photo-grid">
+
+        <!-- Card grande: comunidad -->
+        <div class="inc-card inc-card--wide reveal">
+          <img src="foto-grupo-clase.png" alt="Comunidad Acroflex" />
+          <div class="inc-overlay"></div>
+          <div class="inc-content">
+            <div class="inc-icon">🪩</div>
+            <div class="inc-title">Comunidad Acroflex</div>
+            <div class="inc-text">Conoces tu tribu. Personas que comparten tu energía y tus ganas de moverse.</div>
+          </div>
+        </div>
+
+        <!-- Card vertical: acrobacias -->
+        <div class="inc-card reveal">
+          <img src="foto-cartwheel-accion.png" alt="Acrobacias multinivel" />
+          <div class="inc-overlay"></div>
+          <div class="inc-content">
+            <div class="inc-icon">🥳</div>
+            <div class="inc-title">Acro multinivel</div>
+            <div class="inc-text">Desde cero hasta avanzado. Todos avanzan desde donde están.</div>
+          </div>
+        </div>
+
+        <!-- Card vertical: flexibilidad -->
+        <div class="inc-card reveal reveal-delay-1">
+          <img src="foto-splits-sonrisa.png" alt="Estiramiento" />
+          <div class="inc-overlay"></div>
+          <div class="inc-content">
+            <div class="inc-icon">🎈</div>
+            <div class="inc-title">Estiramiento guiado</div>
+            <div class="inc-text">Flexibilidad progresiva y segura. Sin forzar nada.</div>
+          </div>
+        </div>
+
+        <!-- Card vertical: coach -->
+        <div class="inc-card reveal reveal-delay-2">
+          <img src="foto-handstand-coach.png" alt="Entrenadores" />
+          <div class="inc-overlay"></div>
+          <div class="inc-content">
+            <div class="inc-icon">🎉</div>
+            <div class="inc-title">Entrenadores especializados</div>
+            <div class="inc-text">Acompañamiento personalizado de inicio a fin.</div>
+          </div>
+        </div>
+
+        <!-- Card grande: fotos y videos -->
+        <div class="inc-card inc-card--wide reveal">
+          <img src="foto-handstand-solo.png" alt="Fotos y videos" />
+          <div class="inc-overlay"></div>
+          <div class="inc-content">
+            <div class="inc-icon">✨</div>
+            <div class="inc-title">Espacios para fotos y videos</div>
+            <div class="inc-text">El espacio está preparado para que te lleves contenido que vale la pena compartir.</div>
+          </div>
+        </div>
+
+        <!-- Card sin foto: música -->
+        <div class="inc-card inc-card--gradient reveal reveal-delay-1">
+          <div class="inc-overlay" style="background:none;"></div>
+          <div class="inc-content" style="bottom:50%;transform:translateY(50%);text-align:center;">
+            <div class="inc-icon" style="font-size:40px;text-align:center;">🎶</div>
+            <div class="inc-title" style="text-align:center;font-size:18px;">Buena música</div>
+            <div class="inc-text" style="text-align:center;">Toda la noche. El ambiente importa tanto como el entrenamiento.</div>
+          </div>
+        </div>
+
+        <!-- Card sin foto: marcas -->
+        <div class="inc-card inc-card--gradient reveal reveal-delay-2">
+          <div class="inc-overlay" style="background:none;"></div>
+          <div class="inc-content" style="bottom:50%;transform:translateY(50%);text-align:center;">
+            <div class="inc-icon" style="font-size:40px;text-align:center;">🎁</div>
+            <div class="inc-title" style="text-align:center;font-size:18px;">Marcas sorpresa</div>
+            <div class="inc-text" style="text-align:center;">Solo los que vengan lo sabrán. Parte de la experiencia.</div>
+          </div>
+        </div>
+
+        <!-- Card vertical: ambiente -->
+        <div class="inc-card reveal">
+          <img src="foto-grupo-comunidad.png" alt="Ambiente" />
+          <div class="inc-overlay"></div>
+          <div class="inc-content">
+            <div class="inc-icon">🎊</div>
+            <div class="inc-title">Ambiente sin ego</div>
+            <div class="inc-text">Sin comparaciones. Sin juicios. Pura buena vibra.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ════════ PRECIOS ════════ -->
+  <section class="section section--alt pricing-section" id="precios" style="position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:url('foto-handstand-solo.png') center 20%/cover no-repeat;opacity:.07;z-index:0;pointer-events:none;"></div>
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="label-tag reveal" style="display:block;">Inscripciones abiertas</div>
+      <h2 class="section-title reveal">Elige tu <span>opción</span></h2>
+      <p class="section-subtitle reveal" style="margin-inline:auto;text-align:center;">
+        Inscripciones por WhatsApp al <strong style="color:var(--white);">993 813 336</strong> · Cupos limitados
+      </p>
+
+      <div class="pricing-grid">
+
+        <!-- OPCIÓN 1: individual -->
+        <div class="price-card reveal">
+          <div class="price-tag"><sup>S/</sup>99</div>
+          <p class="price-desc">Por persona · Acceso completo a la experiencia</p>
+          <a href="https://wa.me/51993813336?text=Hola!%20Quiero%20inscribirme%20al%20Acroflex%20Experience%20del%20viernes%2029%20de%20mayo%20%F0%9F%8E%89%20-%20precio%20individual" target="_blank" rel="noopener" class="btn btn-outline btn-full price-cta">
+            📲 Inscribirme
+          </a>
+        </div>
+
+        <!-- OPCIÓN 2: dúo — destacada -->
+        <div class="price-card price-card--featured reveal reveal-delay-1">
+          <div class="price-badge">🎊 Mejor opción</div>
+          <div class="price-tag"><sup>S/</sup>169</div>
+          <p class="price-desc">Por 2 personas · ¡Trae a alguien y ahorran juntos!</p>
+          <div class="price-saving">Ahorran S/ 29 entre los dos</div>
+          <a href="https://wa.me/51993813336?text=Hola!%20Quiero%20inscribirme%20para%202%20personas%20al%20Acroflex%20Experience%20del%20viernes%2029%20de%20mayo%20%F0%9F%8E%89" target="_blank" rel="noopener" class="btn btn-primary btn-full price-cta">
+            Inscribir 2 personas
+          </a>
+        </div>
+
+      </div>
+
+      <p style="text-align:center;margin-top:24px;font-size:13px;color:var(--gray);">
+        ⚠️ <strong style="color:var(--white);">Cupos limitados.</strong> La inscripción se confirma por WhatsApp al completar el pago.
+      </p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ════════ MARCAS ALIADAS ════════ -->
+  <section class="section brands-section" id="marcas">
+    <div class="container">
+      <div class="label-tag reveal" style="display:block;">Solo los que vengan lo sabrán</div>
+      <h2 class="section-title reveal">Marcas <span>sorpresa</span> 🎁</h2>
+      <p class="section-subtitle reveal" style="margin-inline:auto;text-align:center;">
+        Habrá marcas especiales presentes esa noche. No vamos a revelar quiénes son. Eso es parte de la experiencia.
+      </p>
+
+      <div class="brands-grid reveal">
+        <div class="brand-card">
+          <div class="brand-mystery-icon">🎁</div>
+          <div class="brand-mystery-label">???</div>
+          <div class="brand-redacted"></div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-mystery-icon">🎁</div>
+          <div class="brand-mystery-label">???</div>
+          <div class="brand-redacted"></div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-mystery-icon">🎁</div>
+          <div class="brand-mystery-label">???</div>
+          <div class="brand-redacted"></div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-mystery-icon">🎁</div>
+          <div class="brand-mystery-label">???</div>
+          <div class="brand-redacted"></div>
+        </div>
+      </div>
+
+      <p class="brands-reveal-note reveal">
+        Se revelan el <strong>viernes 29 de mayo</strong> — en persona.
+      </p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ════════ GALERÍA ════════ -->
+  <!--
+    IMÁGENES: reemplaza cada <div class="gallery-placeholder"> con:
+    <img src="ruta/de/tu/foto.jpg" alt="descripción" />
+    dentro del <div class="gallery-item">
+  -->
+  <section class="gallery-section section--light" id="galeria">
+    <div class="container">
+      <div class="label-tag reveal">La experiencia en imágenes</div>
+      <h2 class="section-title reveal">Imagínate <span>aquí</span></h2>
+      <p class="section-subtitle reveal">Acro, estiramiento, música, comunidad — todo en un solo espacio. ¿No quieres estar ahí?</p>
+
+      <div class="gallery-grid">
+        <div class="gallery-item reveal">
+          <img src="foto-grupo-clase.png" alt="Comunidad Acroflex" />
+        </div>
+        <div class="gallery-item reveal reveal-delay-1">
+          <img src="foto-handstand-solo.png" alt="Handstand" />
+        </div>
+        <div class="gallery-item reveal reveal-delay-2">
+          <img src="foto-cartwheel-accion.png" alt="Acrobacia en acción" />
+        </div>
+        <div class="gallery-item reveal reveal-delay-1">
+          <img src="foto-splits-sonrisa.png" alt="Splits con sonrisa" />
+        </div>
+        <div class="gallery-item reveal reveal-delay-2">
+          <img src="foto-grupo-comunidad.png" alt="Grupo adultos Acroflex" />
+        </div>
+        <div class="gallery-item reveal">
+          <img src="foto-puente-logo.png" alt="Puente — flexibilidad" />
+        </div>
+        <div class="gallery-item reveal reveal-delay-1">
+          <img src="foto-handstand-coach.png" alt="Coach guiando handstand" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ════════ FAQ ════════ -->
+  <section class="section" id="faq" style="position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:url('foto-splits-sonrisa.png') center 30%/cover no-repeat;opacity:.06;z-index:0;pointer-events:none;"></div>
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="label-tag reveal" style="text-align:center;display:block;">Resolvemos tus dudas</div>
+      <h2 class="section-title reveal" style="text-align:center;">Preguntas <span>frecuentes</span></h2>
+
+      <div class="faq-list">
+
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            ¿Necesito experiencia previa?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              No. La experiencia está pensada para jóvenes y adultos con o sin experiencia. Los ejercicios se adaptan por nivel, así que empieces donde empieces, hay algo para ti.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            ¿Puedo ir si no soy flexible?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Sí. Justamente trabajaremos flexibilidad de forma progresiva, segura y guiada. No importa tu rango actual: desde donde estés puedes avanzar.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            ¿Es para adultos?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Sí. Acroflex Experience está pensada para jóvenes y adultos que quieren aprender, moverse y retarse. No importa la edad: lo que importa es las ganas.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            ¿Es seguro?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Sí. Trabajamos con progresiones, técnica y acompañamiento de entrenadores especializados. No se trata de forzar el cuerpo, sino de avanzar paso a paso de forma correcta.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            ¿Es realmente multinivel?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Sí, en serio. Hay personas que vienen de cero y personas que ya entrenan acro regularmente. Los entrenadores guían a cada uno desde donde está. No hay un solo ritmo ni un solo nivel: cada quien avanza con su propio proceso.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            ¿Qué debo llevar?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Ropa cómoda para moverte bien, una botella de agua y ganas de pasarla bien. Nada más. El resto lo ponemos nosotros: música, espacio y buena vibra.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            ¿Dónde queda?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <!-- VAR_DIRECCION: agrega la dirección exacta aquí -->
+              En Acroflex, Jesús María, Lima, Perú. Escríbenos por WhatsApp y te enviamos la ubicación exacta.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            ¿Los cupos son limitados?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <!-- VAR_CUPOS -->
+              Sí. Los cupos son limitados para poder acompañar mejor a cada participante y garantizar la calidad de la experiencia. Te recomendamos reservar pronto.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            ¿Puedo ir con una amiga o amigo?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Sí. Puedes venir sola, solo o acompañado. La experiencia está diseñada para que te sientas en comunidad desde el primer momento, ya vengas con alguien o no.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            ¿Me da vergüenza o miedo no poder hacer nada?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Totalmente normal sentir eso antes de empezar. En Acroflex el ambiente es sin juicios: todos venimos de algún punto inicial y todos avanzamos a nuestro ritmo. Nadie te va a presionar ni comparar. Lo prometemos.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ════════ CTA FINAL ════════ -->
+  <section class="section final-cta" id="inscribete">
+    <div class="container">
+      <div class="label-tag reveal" style="display:block;text-align:center;">Te esperamos</div>
+      <h2 class="section-title reveal" style="text-align:center;">
+        Una noche de acro, música<br>y <span>acrocompañeros.</span>
+      </h2>
+      <p class="section-subtitle reveal" style="text-align:center;margin-inline:auto;">
+        Este miércoles 29, ven a jugar, estirar, aprender acro y conocer personas que comparten tu misma energía. Multinivel — da igual tu nivel, todos son bienvenidos.
+      </p>
+
+      <div class="cta-actions reveal">
+        <a href="https://wa.me/51993813336?text=Hola!%20Quiero%20inscribirme%20al%20Acroflex%20Experience%20del%20viernes%2029%20de%20mayo%20%F0%9F%8E%89" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:18px;padding:20px 40px;">
+          Reservar mi cupo
+        </a>
+        <a href="https://wa.me/51993813336?text=Hola!%20Tengo%20una%20pregunta%20sobre%20el%20Acroflex%20Experience%20del%20viernes%2029%20de%20mayo" target="_blank" rel="noopener" class="btn btn-outline">
+          Tengo una pregunta
+        </a>
+      </div>
+
+      <p class="urgency-note reveal">
+        <strong>Cupos limitados.</strong> Inscripciones por WhatsApp al <strong style="color:var(--orange);">993 813 336</strong> · S/ 99 persona · S/ 169 por 2
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════ FOOTER ════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo"><img src="logo-acroflex.png" alt="Acroflex" /></div>
+      <p>Jesús María, Lima, Perú</p>
+      <p style="margin-top:8px;">
+        <a href="https://wa.me/51993813336" target="_blank" rel="noopener" class="footer-link">Escríbenos por WhatsApp</a>
+      </p>
+      <p style="margin-top:20px;font-size:12px;">© 2025 Acroflex. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- ════════ FLOATING CTA (solo mobile) ════════ -->
+  <a href="https://wa.me/51993813336?text=Hola%2C%20quiero%20reservar%20mi%20cupo%20para%20Acroflex%20Experience" target="_blank" rel="noopener" class="btn btn-primary floating-cta" id="floatingBtn">
+    Reservar cupo
+  </a>
+
+  <!-- ════════ JAVASCRIPT ════════ -->
+  <script>
+    // ── Scroll down indicator: se oculta al hacer scroll ──
+    const scrollDown = document.getElementById('scrollDown');
+    window.addEventListener('scroll', () => {
+      scrollDown.classList.toggle('hidden', window.scrollY > 80);
+    }, { passive: true });
+
+    // ── Navbar scroll effect ──
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // ── Scroll reveal ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── FAQ accordion ──
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const answer = item.querySelector('.faq-answer');
+        const isOpen = item.classList.contains('open');
+
+        // Cierra todos
+        document.querySelectorAll('.faq-item.open').forEach(openItem => {
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-answer').style.maxHeight = '0';
+        });
+
+        // Abre el seleccionado si estaba cerrado
+        if (!isOpen) {
+          item.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // ── Cuenta regresiva ──
+    // VAR_FECHA_EVENTO: cambia la fecha y hora del evento aquí
+    // Formato: 'AÑO-MES-DIATHH:MM:SS'  →  ej. '2026-07-29T19:00:00'
+    const eventDate = new Date('2026-05-29T19:00:00');
+
+    function updateCountdown() {
+      const now  = new Date();
+      const diff = eventDate - now;
+      const boxes = document.getElementById('countdown-boxes');
+      if (!boxes) return;
+
+      if (diff <= 0) {
+        boxes.innerHTML = '<p class="countdown-live">🎉 ¡El evento está comenzando!</p>';
+        clearInterval(cdInterval);
+        return;
+      }
+
+      const pad = n => String(n).padStart(2, '0');
+      document.getElementById('cd-days').textContent  = pad(Math.floor(diff / 86400000));
+      document.getElementById('cd-hours').textContent = pad(Math.floor((diff % 86400000) / 3600000));
+      document.getElementById('cd-mins').textContent  = pad(Math.floor((diff % 3600000) / 60000));
+      document.getElementById('cd-secs').textContent  = pad(Math.floor((diff % 60000) / 1000));
+    }
+
+    updateCountdown();
+    const cdInterval = setInterval(updateCountdown, 1000);
+
+    // ── Floating CTA: ocultar cuando hero es visible ──
+    const floatingBtn = document.getElementById('floatingBtn');
+    const heroSection = document.getElementById('hero');
+    const heroObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        floatingBtn.style.opacity = entry.isIntersecting ? '0' : '1';
+        floatingBtn.style.pointerEvents = entry.isIntersecting ? 'none' : 'auto';
+      });
+    }, { threshold: 0.3 });
+    heroObserver.observe(heroSection);
+  </script>
+
+</body>
+</html>
